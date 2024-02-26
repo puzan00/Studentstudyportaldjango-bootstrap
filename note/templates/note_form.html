@@ -1,0 +1,27 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Note</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Title:</label>
+        {{ form.title }}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.description.id_for_label }}">Description:</label>
+        {{ form.description }}
+        
+      </div>
+
+      <button type="submit" class="btn btn-success">
+        {% if form.instance.pk %}Update{% else %}Create{% endif %}
+      </button>
+
+      <a href="{% url 'notes' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

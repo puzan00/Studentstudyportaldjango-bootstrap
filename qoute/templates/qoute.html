@@ -1,0 +1,25 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/qoute.css' %}">
+
+<div class="container mt-5 text-center quote-container mb-2 p-0 rounded">
+    <div class="card rounded m-0">
+        <div class="card-body">
+            <h1 class="card-title display-4 text-white">Quote of the day</h1>
+            <hr style="background:white">
+            <div class="blockquote">
+                <p class="card-text lead text-light" id="quote-text">{% if quote %}{{ quote }}{% endif %}</p>
+                <footer class="blockquote-footer text-warning float-right mb-2 mr-2">{{ author }}</footer>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-center mb-5">
+                <a href="{% url "qoutes" %}" class="btn btn-outline-light btn-lg">Generate New Quote</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

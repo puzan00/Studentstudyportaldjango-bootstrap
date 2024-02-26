@@ -1,0 +1,28 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="container text-center">
+    <h1 class="display-4">Latest Tech News</h1>
+    <hr>
+
+    <!-- Main -->
+    <div class="row">
+        {% for item in mylist %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ item.img }}" style="height: 200px" class="card-img-top" alt="News Image">
+                    <div class="card-body" style="height: 200px;">
+                        <h5 class="card-title" style="font-size: 1.2rem; max-height: 70px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">{{ item.desc }}</h5>
+                        <p class="card-text" style="height: 50px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ item.news }}</p>
+                        <small class="text-muted">Published on {{ item.published_at}}</small>
+                    </div>
+                    <div class="card-footer d-flex align-items-center m-0 p-0">
+                        <a href="{{ item.url }}" class="btn btn-success btn-block rounded-0" target="_blank">See News</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

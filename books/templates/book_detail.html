@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{ book.cover_image.url }}" style="width:250px; height:320px" class="img-fluid book-detail-image" alt="{{ book.title }}">
+        </div>
+        <div class="col-md-9">
+            <h3 class="display-4">{{ book.title }}</h3>
+            <p class="lead">{{ book.author }}</p>
+            <p>{{ book.description }}</p>
+
+            <button class="btn btn-primary" onclick="toggleSummary()">Show Summary</button>
+            <div id="book-summary-container" style="display: none; background:#FFFAF0; padding: 10px; margin-top: 10px;text-align:justify;">
+                <div id="book-summary">{{ book.summary|linebreaks }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleSummary() {
+        let summaryContainer = document.getElementById('book-summary-container');
+        summaryContainer.style.display = (summaryContainer.style.display === 'none' || summaryContainer.style.display === '') ? 'block' : 'none';
+        document.activeElement.blur();
+    }
+</script>
+
+{% endblock %}

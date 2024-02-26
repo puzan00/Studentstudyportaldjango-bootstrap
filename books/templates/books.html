@@ -1,0 +1,31 @@
+<!-- books/templates/books/book_list.html -->
+
+{% extends 'dashboard/base.html' %}
+{% load static%}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container">
+    <h3 class="display-4">List of Books</h3>
+    <hr>
+
+    <div class="row">
+        {% for book in books %}
+            <div class="col-md-4 mb-4">
+                <div class="card" style="max-width:280px;">
+                    <a href="{% url 'book-detail' book.id %}">
+                        <img src="{{ book.cover_image.url }}"style="max-height:200px;" class="card-img-top" alt="{{ book.title }}">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="card-title" style="text-align:center">{{ book.title }}</h6>
+                        <p class="card-text small">{{ book.author }}</p>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

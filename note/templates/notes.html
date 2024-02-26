@@ -1,0 +1,49 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <div class="container mt-4">
+    <h1 class="display-4">Notes</h1>
+    {% if messages %}
+      <div class="alert alert-info" id="alertMessage" role="alert">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+
+      <script>
+        setTimeout(function() {
+          var alertMessage = document.getElementById('alertMessage');
+          alertMessage.style.display = 'none';
+        }, 3000);
+      </script>
+    {% endif %}
+
+    <div class="row">
+      {% for note in notes_list %}
+        <div class="col-md-5 mb-3">
+          <div class="card card-color"> 
+            <div class="card-body">
+              <h5 class="card-title">{{ note.title.upper }}</h5>
+              <hr>
+              <p class="card-text">{{ note.description }}</p>
+
+              <div class="d-flex justify-content-end align-items-center">
+                <a href="{% url 'note-update' note.id %}" class="btn btn-info">
+                  <i class="fas fa-pen" style="font-size: 20px; color: black;"></i> 
+                </a>
+                <div class="vertical-line mx-2"></div> 
+                <a href="{% url 'note-delete' note.id %}" class="btn btn-danger">
+                  <i class="fas fa-trash" style="font-size: 20px; color: black;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a href="{% url 'note-create' %}" class="btn btn-success mt-4">Create a new notes</a>
+  </div>
+{% endblock %}

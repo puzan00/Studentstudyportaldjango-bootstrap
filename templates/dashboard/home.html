@@ -1,0 +1,87 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <section class="container text-center">
+    <div class="row">
+      <div class="col-md-4">
+        <a {% if user.is_authenticated %}href="{% url "todo" %}"{% else %}href="{% url "login" %}"{% endif %} class="text-decoration-none">
+          <div class="card">
+            <img src="{% static 'images/todo.avif' %}" class="card-img-top img-fluid" alt="To Do image">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title">To Do</h5>
+              <p class="card-text">Manage your daily tasks efficiently.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a {% if user.is_authenticated %}href="{% url "notes" %}"{% else %}href="{% url "login" %}"{% endif %} class="text-decoration-none">
+          <div class="card">
+            <img src="{% static 'images/notes.jpg' %}" class="card-img-top img-fluid" alt="Notes image">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title">Notes</h5>
+              <p class="card-text">Create and store notes for future reference.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a {% if user.is_authenticated %}href="{% url "news" %}"{% else %}href="{% url "login" %}"{% endif %} class="text-decoration-none">
+          <div class="card">
+            <img src="{% static 'images/news.avif' %}" style="height:232px" class="card-img-top img-fluid" alt="Homework image">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title">Latest tech news</h5>
+              <p class="card-text">Get latest tech news spanning the last 7 days.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a {% if user.is_authenticated %}href="{% url "book-list" %}"{% else %}href="{% url "login" %}"{% endif %} class="text-decoration-none">
+          <div class="card">
+            <img src="{% static 'images/books.avif' %}" style="height:232px;" class="card-img-top img-fluid" alt="Books image">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title">Books</h5>
+              <p class="card-text">Read Books Summaries</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      
+        <div class="col-md-4">
+            <a {% if user.is_authenticated %}href="{% url "calculator" %}"{% else %}href="{% url "login" %}"{% endif %} class="text-decoration-none">
+                <div class="card">
+                    <img src="{% static 'images/calculator.webp' %}" style="height:232px" class="card-img-top img-fluid" alt="Quick links image">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h5 class="card-title">Calculator</h5>
+                        <p class="card-text" style="padding:0px">Perform quick calculations Faster.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    
+        <div class="col-md-4">
+            <a {% if user.is_authenticated %}href="{% url "qoutes" %}"{% else %}href="{% url "login" %}"{% endif %} class="text-decoration-none">
+                <div class="card">
+                    <img src="{% static 'images/qoutes.jpeg' %}" class="card-img-top img-fluid" alt="words image">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h5 class="card-title">Qoutes</h5>
+                        <p class="card-text">Find daily inspiration to brighten your journey.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    </section>
+   
+</body>
+
+
+
+{% endblock content %}

@@ -1,0 +1,112 @@
+.container {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.card-color {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+}
+
+.card-color:hover {
+    background-color: #e6f7ff;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card-title {
+    background-color: #dd5c70;
+    color: #ffffff;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    max-height: 40px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-text {
+    margin-bottom: 5px;
+    overflow: hidden;
+    white-space: pre-line;
+    color: black;
+}
+
+.card-body hr {
+    border-top: 2px solid #4285f4;
+    margin: 5px 0;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-info,
+.btn-danger {
+    transition: color 0.3s ease;
+}
+
+.btn-info:hover,
+.btn-danger:hover {
+    color: #000000;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1200px) {
+    .card {
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card-title {
+        max-height: 30px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .card {
+        margin-bottom: 10px;
+    }
+
+    .card-title {
+        max-height: 20px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .card-title {
+        max-height: 18px;
+    }
+}

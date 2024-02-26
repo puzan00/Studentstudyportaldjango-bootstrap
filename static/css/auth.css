@@ -1,0 +1,37 @@
+.my-form {
+    margin-top: 50px;
+}
+
+.login-form,
+.register-form {
+    padding: 20px;
+    border: 1px solid #e5e5e5; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    color: white;
+    
+}
+
+.form-group {
+    margin-bottom: 20px;
+    
+}
+
+.btn-primary {
+    background-color:#0d6921;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color:#094e09;  
+}
+
+.btn-secondary {
+    background-color: #696e74;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}

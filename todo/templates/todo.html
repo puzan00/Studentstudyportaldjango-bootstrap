@@ -1,0 +1,84 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/todo.css' %}">
+<div class="container mt-4" id="tod">
+  <h1 class="display-4">Todo List</h1>
+  {% if todos %}
+  <table class="styled-table table-bordered ">
+    <thead class="thead-dark">
+      <tr>
+        <th>SN.</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Created at</th>
+        <th>Status</th>
+        <th>Actions</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in todos %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          {% if todo.complete %}
+            <td><del>{{ todo.title.upper }}</del></td>
+            <td><del>{{ todo.description }}</del></td>
+            <td><del>{{ todo.created }}</del></td>
+          {% else %}
+            <td>{{ todo.title.upper }}</td>
+            <td>{{ todo.description }}</td>
+            <td>{{ todo.created }}</td>
+          {% endif %}
+          
+          <td>
+            {% if todo.complete %}
+              <a href="{% url 'todo-complete' todo.pk %}">Mark as Incomplete</a>
+            {% else %}
+              <a href="{% url 'todo-complete' todo.pk %}">Mark as Complete</a>
+            {% endif %}
+          </td>
+          
+          <td>
+            <a class="btn btn-warning btn-sm" href="{% url 'todo-update' todo.pk %}">
+              <i class="fas fa-pen" style="font-size: 18px;"></i>
+            </a>
+            <a class="btn btn-danger btn-sm" href="{% url 'todo-delete' todo.pk %}">
+              <i class="fas fa-trash" style="font-size: 18px;"></i>
+            </a>
+          </td>
+          
+        </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+ 
+  {% else %}
+    <h2>No Todolist today!</h2>
+  {% endif %}
+
+  {% if messages %}
+  <div class="alert alert-info" id="alertMessage" role="alert">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  </div>
+
+  <script>
+    setTimeout(function() {
+      var alertMessage = document.getElementById('alertMessage');
+      alertMessage.style.display = 'none';
+    }, 3000);
+  </script>
+{% endif %}
+
+
+  <a class="btn btn-info mt-3" href="{% url 'todo-create' %}">Create Todo</a>
+  {% if todos %}
+    <a class="btn btn-danger mt-3" href="{% url 'todo-delete-all' %}">Delete All</a>
+  {% endif %}
+  
+{% endblock %}

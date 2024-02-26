@@ -1,0 +1,27 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Todo</h2>
+    <form method="post" action="{% if form.instance.pk %}{% url 'todo-update' form.instance.pk %}{% else %}{% url 'todo-create' %}{% endif %}">
+      {% csrf_token %}
+      
+      <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Title:</label>
+        {{ form.title }}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.description.id_for_label }}">Description:</label>
+        {{ form.description }}
+      </div>
+
+      <button type="submit" class="btn btn-success">
+        {% if form.instance.pk %}Update{% else %}Create{% endif %}
+      </button>
+
+      <a href="{% url 'todo' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

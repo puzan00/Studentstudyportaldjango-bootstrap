@@ -1,0 +1,62 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/auth.css' %}">
+
+<div class="container my-form">
+    <div class="col-md-6 mx-auto">
+        {% for msg in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+
+        <form method="POST" class="register-form mb-2" >
+            {% csrf_token %}
+            <h2>Register</h2>
+
+           
+            <div class="form-group">
+                <label for="firstname">Firstname</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'login' %}" class="btn btn-secondary" style="margin-left: 5px">Cancel</a>
+        </form>
+        <div class="text-center ">
+            <p>Already have an account? <a href="{% url 'login' %}">login here</a></p>
+        </div>
+    </div>
+    
+</div>
+
+
+
+{% endblock content %}
